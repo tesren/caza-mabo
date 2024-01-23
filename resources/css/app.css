@@ -1,4 +1,6 @@
 @import url('/resources/css/bootstrap.min.css');
+@import url('/resources/css/all.min.css');
+@import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 :root{
     --brown: #864A1C;
@@ -35,14 +37,85 @@ h1, h2, h3, h4, h5, h6{
     height: 100%;
 }
 
+.fondo-cafe-amenities{
+    background-color: transparent;
+    opacity: 0;
+    mix-blend-mode: hard-light;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.2s;
+    text-align: center;
+    color: white;
+    font-family: 'Sofia Sans', sans-serif !important;
+}
+
+.fondo-cafe-amenities:hover{
+    opacity: 1;
+    background-color: var(--brown);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
 .fs-0{
     font-size: 70px;
+}
+
+.fs-7{
+    font-size: 14px;
 }
 
 .row{
     width: 100% !important;
     margin-left: auto !important;
     margin-right: auto !important;
+}
+
+.text-lightbrown{
+    color: var(--lightbrown);
+}
+
+.text-green{
+    color: var(--green);
+}
+
+.text-brown{
+    color: var(--brown);
+}
+
+.bg-brown{
+    background-color: var(--brown);
+    color: #fff;
+}
+
+.bg-lightbrown{
+    background-color: var(--lightbrown);
+    color: #fff;
+}
+
+.bg-half-green{
+    background: linear-gradient(to bottom, white 30%, #A8B8A7 30%, #A8B8A7 70%, white 70%);
+}
+
+.amenities .fa-diamond{
+    font-size: 10px;
+    align-self: center;
+}
+
+.btn-outline-brown{
+    background-color: transparent;
+    border: 2px solid var(--brown);
+    border-radius: 0;
+    color: var(--brown);
+}
+
+.btn-outline-brown:hover{
+    background-color: var(--brown);
+    color: white;
+    transition: 0.3s;
 }
 
 .white-line::after{
@@ -54,4 +127,85 @@ h1, h2, h3, h4, h5, h6{
     transform: translateY(-50%);
     width: 2px; /* Ancho de la línea vertical */
     background-color: #D9D9D9; /* Color de la línea vertical */
+}
+
+#whatsapp{
+    right:20px; 
+    bottom:20px; 
+    width:60px; 
+    height:60px; 
+    font-size:45px;
+    background-color: var(--green);
+    transition: 0.2s;
+}
+
+#whatsapp:hover{
+    background-color: #25d366;
+    transition: 0.3s;
+}
+
+.shadow-4 {
+    box-shadow: 0 2px 4px -1px #0003,0 4px 5px #00000024,0 1px 10px #0000001f;
+}
+
+.shadow-7 {
+    box-shadow: 0 4px 5px -2px #0003,0 7px 10px 1px #00000024,0 2px 16px 1px #0000001f;
+}
+
+#main-navbar{
+    z-index: 5;
+}
+
+label{
+    font-size: 16px;
+    color: var(--lightbrown);
+}
+
+.contact-input{
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--brown);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--bs-body-bg);
+    background-clip: padding-box;
+    border-bottom: 2px solid var(--brown);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.contact-input::placeholder{
+    color: var(--lightbrown);
+}
+
+@media (max-width: 992px) {
+    .mt-6{
+        margin-top: 3.5rem !important;
+    }
+    
+    .mb-6{
+        margin-bottom: 3.5rem !important;
+    }
+    
+    .my-6{
+        margin-top: 3.5rem !important;
+        margin-bottom: 3.5rem !important;
+    }
+
+    .fs-0{
+        font-size: 2.7rem;
+    }
+
+    .white-line::after{
+        width: 0px; /* Ancho de la línea vertical */
+        background-color: transparent; /* Color de la línea vertical */
+    }
 }

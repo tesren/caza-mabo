@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Spatie\Honeypot\ProtectAgainstSpam;
 use App\Http\Controllers\PublicPagesController;
 
 /*
@@ -15,3 +16,5 @@ use App\Http\Controllers\PublicPagesController;
 */
 
 Route::get('/', [PublicPagesController::class, 'home'])->name('home');
+
+Route::post('/send-message', [PublicPagesController::class, 'sendMail'])->name('send.email')->middleware(ProtectAgainstSpam::class);
