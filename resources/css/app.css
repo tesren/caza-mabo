@@ -96,6 +96,11 @@ h1, h2, h3, h4, h5, h6{
     color: #fff;
 }
 
+.bg-green{
+    background-color: var(--green);
+    color: white;
+}
+
 .bg-half-green{
     background: linear-gradient(to bottom, white 30%, #A8B8A7 30%, #A8B8A7 70%, white 70%);
 }

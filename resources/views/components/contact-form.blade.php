@@ -37,6 +37,8 @@
                     <textarea name="message" id="message" cols="30" class="contact-input mb-4" rows="3" placeholder="{{__('Mensaje')}}">{{old('message')}}</textarea>
                 </div>
 
+                <input type="hidden" name="url" id="url" value="{{ request()->fullUrl() }}">
+
                 <div class="col-12 mb-5">
                     <button type="submit" id="submit-btn" class="btn btn-outline-brown w-100" @if(session('message')) disabled @endif>
                         {{__('Enviar')}}
@@ -66,7 +68,13 @@
             </div>
         @endif
 
-        {{-- Falta función de js --}}
+        {{-- Javascript --}}
+        <script>
+            function disableBtn(){
+                let submitButton = document.getElementById('submit-btn');
+                submitButton.disable = true; 
+            }
+        </script>
 
     </div>
 

@@ -28,11 +28,11 @@
                     </li>
 
                     <li class="nav-item position-relative">
-                        <a class="nav-link white-line px-4 fw-medium" href="#">{{__('Nosotros')}}</a>
+                        <a class="nav-link white-line px-4 fw-medium" href="{{route('about')}}">{{__('Nosotros')}}</a>
                     </li>
 
                     <li class="nav-item position-relative">
-                        <a class="nav-link white-line px-4 fw-medium" href="#">{{__('Avance de Obra')}}</a>
+                        <a class="nav-link white-line px-4 fw-medium" href="{{route('construction')}}">{{__('Avance de Obra')}}</a>
                     </li>
 
                     <li class="nav-item position-relative">

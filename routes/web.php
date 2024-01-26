@@ -17,4 +17,8 @@ use App\Http\Controllers\PublicPagesController;
 
 Route::get('/', [PublicPagesController::class, 'home'])->name('home');
 
+Route::get('/avances-de-obra', [PublicPagesController::class, 'construction'])->name('construction');
+
+Route::get('/sobre-nosotros', function(){return view('about');})->name('about');
+
 Route::post('/send-message', [PublicPagesController::class, 'sendMail'])->name('send.email')->middleware(ProtectAgainstSpam::class);

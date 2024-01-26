@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Unit;
+use Barryvdh\DomPDF\PDF;
+use App\Models\PaymentPlan;
 use Illuminate\Http\Request;
+use App\Models\ConstructionUpdate;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 
 class PublicPagesController extends Controller
 {
@@ -10,6 +16,13 @@ class PublicPagesController extends Controller
 
     public function home(){
         return view('home');
+    }
+
+    public function construction(){
+
+        $updates = ConstructionUpdate::orderByDesc('date')->paginate(5)->appends(request()->query());
+        
+        return view('construction', compact('updates'));
     }
 
     public function sendMail(Request $request){
@@ -27,7 +40,7 @@ class PublicPagesController extends Controller
         else{
             $msg = new Message();
 
-            $msg->name = $request->input('name');
+            $msg->name = $request->input('full_name');
             $msg->email = $request->input('email');
             $msg->phone = $request->input('phone');
             $msg->content = $request->input('message');
@@ -45,13 +58,13 @@ class PublicPagesController extends Controller
             $plan_id = $request->input('down_plan_id');
 
             //para el webhook
-            $type = "Contacto desde el sitio web de The One Residences";
+            $type = "Contacto desde el sitio web de Caza Mabó";
 
             if( isset($contact_pref) ){
                 $msg->ap_time = $ap_time;
                 $msg->ap_date = $ap_date;
                 $msg->contact_pref = $contact_pref;
-                $type = 'El cliente dejó sus datos y está interesado en una cita en The One Residences el día '.$ap_date.' a las '.$ap_time;  
+                $type = 'El cliente dejó sus datos y está interesado en una cita en Caza Mabó el día '.$ap_date.' a las '.$ap_time;  
             }
             
             //solo landing page de cotizador
@@ -88,15 +101,14 @@ class PublicPagesController extends Controller
             ];
 
             // Enviar la solicitud POST al webhook
-            $response = Http::post($webhookUrl, $data);
+            // $response = Http::post($webhookUrl, $data);
 
 
-            $email = Mail::to('info@domusvallarta.com')->bcc('ventas@punto401.com');
-            //$email->cc(['info@theonebucerias.mx', 'theoneresidences@outlook.com']);
+            //$email = Mail::to('info@domusvallarta.com')->bcc('ventas@punto401.com');
         
-            //$email = Mail::to('erick@punto401.com');
+            $email = Mail::to('erick@punto401.com');
             
-            $email->send(new NewLead($msg));
+            //$email->send(new NewLead($msg));
 
             if( isset($pdf) ){
                 return $pdf->stream();
