@@ -174,12 +174,14 @@
                     // Añadir clase 'bg-brown'
                     // Eliminar clase 'bg-transparent'
                     navbar.classList.add('bg-brown');
+                    navbar.classList.add('shadow-4');
                     navbar.classList.remove('bg-transparent');
                 } else {
                     // Añadir clase 'bg-transparent'
                     // Eliminar clase 'bg-brown'
                     navbar.classList.add('bg-transparent');
                     navbar.classList.remove('bg-brown');
+                    navbar.classList.remove('shadow-4');
                 }
             }
         });

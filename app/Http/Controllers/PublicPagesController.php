@@ -25,6 +25,20 @@ class PublicPagesController extends Controller
         return view('construction', compact('updates'));
     }
 
+    public function inventory(){
+
+        $units = Unit::all();
+
+        return view('inventory', compact('units'));
+
+    }
+
+    public function unit($name){
+        $unit = Unit::where('name', $name)->first();
+
+        return view('unit', compact('unit'));
+    }
+
     public function sendMail(Request $request){
 
         $validator = Validator::make( $request->all(), [

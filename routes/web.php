@@ -21,4 +21,11 @@ Route::get('/avances-de-obra', [PublicPagesController::class, 'construction'])->
 
 Route::get('/sobre-nosotros', function(){return view('about');})->name('about');
 
+Route::get('/contacto', function(){return view('contact');})->name('contact');
+
+Route::get('/inventario-condominios', [PublicPagesController::class, 'inventory'] )->name('inventory');
+
+Route::get('/condominio-en-venta/{unit}', [PublicPagesController::class, 'unit'] )->name('unit');
+
+
 Route::post('/send-message', [PublicPagesController::class, 'sendMail'])->name('send.email')->middleware(ProtectAgainstSpam::class);

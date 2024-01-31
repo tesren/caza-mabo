@@ -64,6 +64,10 @@ h1, h2, h3, h4, h5, h6{
     font-size: 70px;
 }
 
+.fs-max{
+    font-size: 150px;
+}
+
 .fs-7{
     font-size: 14px;
 }
@@ -103,6 +107,10 @@ h1, h2, h3, h4, h5, h6{
 
 .bg-half-green{
     background: linear-gradient(to bottom, white 30%, #A8B8A7 30%, #A8B8A7 70%, white 70%);
+}
+
+.bg-mostly-green{
+    background: linear-gradient(to bottom, white 5%, #A8B8A7 5%, #A8B8A7 95%, white 95%);
 }
 
 .amenities .fa-diamond{
@@ -161,6 +169,17 @@ h1, h2, h3, h4, h5, h6{
     z-index: 5;
 }
 
+.unit-disponible{
+    fill: #63D950;
+    mix-blend-mode: multiply;
+    transition: 0.2s;
+}
+
+.unit-disponible:hover{
+    fill: #198754 ;
+    transition: 0.3s;
+}
+
 label{
     font-size: 16px;
     color: var(--lightbrown);
@@ -207,6 +226,10 @@ label{
 
     .fs-0{
         font-size: 2.7rem;
+    }
+
+    .fs-max{
+        font-size: 3rem;
     }
 
     .white-line::after{

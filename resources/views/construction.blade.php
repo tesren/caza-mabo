@@ -2,7 +2,7 @@
 
 @section('titles')
     <title>{{__('Avances de Obra')}} - Caza Mabó</title>
-    <meta name="description" content="{{__('Aquí podrás consultar el progreso mensual de construcción de Caza Mabó, con imágenes y videos del trabajo y avance general.')}}">
+    <meta name="description" content="{{__('¡Sigue de cerca el emocionante progreso de nuestro desarrollo inmobiliario Caza Mabó Sayulita, Nayarit! Mes a mes, te invitamos a explorar los avances significativos de nuestra construcción a través de imágenes y videos exclusivos.')}}">
 @endsection
 
 @section('content')
@@ -18,7 +18,7 @@
     
         <div class="row justify-content-center mb-5">
             @foreach ($updates as $update)
-                <div class="card rounded-0 col-12 col-lg-8 col-xxl-7 mb-5 p-0">
+                <div class="card rounded-0 col-11 col-lg-8 col-xxl-7 mb-5 p-0 shadow-4">
                     
                     @php
                         $portrait = asset('/media/'.$update->portrait_path);
@@ -67,6 +67,7 @@
     <script>
         var navbar = document.getElementById('main-navbar');
         navbar.classList.add('bg-brown');
+        navbar.classList.add('shadow-4');
         navbar.classList.remove('bg-transparent');
         navbar.classList.remove('fixed-top');
         navbar.classList.add('sticky-top');

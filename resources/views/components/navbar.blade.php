@@ -24,7 +24,7 @@
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
                     <li class="nav-item position-relative">
-                        <a class="nav-link white-line px-4 active fw-medium" href="#">{{__('Inventario')}}</a>
+                        <a class="nav-link white-line px-4 active fw-medium" href="{{route('inventory')}}">{{__('Inventario')}}</a>
                     </li>
 
                     <li class="nav-item position-relative">
@@ -36,15 +36,20 @@
                     </li>
 
                     <li class="nav-item position-relative">
-                        <a class="nav-link white-line px-4 fw-medium" href="#">{{__('Contacto')}}</a>
+                        <a class="nav-link white-line px-4 fw-medium" href="{{route('contact')}}">{{__('Contacto')}}</a>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle ps-4 fw-medium" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
+                    <li class="nav-item dropstart">
+                        <a class="nav-link dropdown-toggle px-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <img src="{{asset('img/language-icon.webp')}}" alt="{{__('Cambiar de idioma')}}">
                         </a>
-                    
+
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                        </ul>
                     </li>
+
                 </ul>
 
             </div>

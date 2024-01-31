@@ -1,14 +1,30 @@
-<section class="row" title="Formulario de contacto">
+@extends('components.base')
 
-    <div class="col-12 col-lg-4 px-0">
-        <img src="{{asset('img/contact-form.webp')}}" alt="Caza Mabó" loading="lazy" class="w-100">
+@section('titles')
+    <title>{{__('Contacto')}} - CAZA MABÓ Sayulita</title>
+    <meta name="description" content="{{__('¿Listo para dar el paso hacia tu retiro tropical o una inversión única? ¡Contáctanos hoy y descubre cómo puedes ser parte de esta experiencia inigualable en el corazón de la Riviera Nayarit!')}}">
+@endsection
+
+@section('content')
+
+    <div class="position-relative">
+
+        <img class="w-100" src="{{asset('/img/caza-mabo-front.webp')}}" alt="Fachada de Caza Mabó" style="height:50vh; object-fit:cover;">
+
+        <div class="fondo-cafe"></div>
+
+        <div class="row justify-content-center position-absolute top-0 start-0 h-100 z-3">
+
+            <div class="col-12 text-center text-white align-self-center">
+                <h1 class="fs-0">{{__('Contacto')}}</h1>
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="col-12 col-lg-1"></div>
-
-    <div class="col-12 col-lg-5 align-self-center mt-4 mt-lg-0">
-
-        <h6 class="fs-2 text-lightbrown px-2 mb-4">{{__('Mantente en contacto')}}</h6>
+    <div class="container my-6">
+        <h2 class="fs-2 text-lightbrown px-2 mb-4">{{__('Mantente en contacto')}}</h2>
 
         {{-- Formulario --}}
         <form action="{{route('send.email')}}" method="post" onsubmit="disableBtn()">
@@ -75,7 +91,33 @@
                 submitButton.disable = true; 
             }
         </script>
-
     </div>
 
-</section>
+@endsection
+
+@section('javascript')
+    <script>
+        var navbar = document.getElementById('main-navbar');
+        var alturaDelViewport = (window.innerHeight/3);
+
+        window.addEventListener("scroll", function () {
+            var scrolled = window.scrollY;
+
+            if (window.innerWidth > 0) {
+                if (scrolled > alturaDelViewport) {
+                    // Añadir clase 'bg-brown'
+                    // Eliminar clase 'bg-transparent'
+                    navbar.classList.add('bg-brown');
+                    navbar.classList.add('shadow-4');
+                    navbar.classList.remove('bg-transparent');
+                } else {
+                    // Añadir clase 'bg-transparent'
+                    // Eliminar clase 'bg-brown'
+                    navbar.classList.add('bg-transparent');
+                    navbar.classList.remove('bg-brown');
+                    navbar.classList.remove('shadow-4');
+                }
+            }
+        });
+    </script>
+@endsection
