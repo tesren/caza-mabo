@@ -15,17 +15,21 @@ use App\Http\Controllers\PublicPagesController;
 |
 */
 
-Route::get('/', [PublicPagesController::class, 'home'])->name('home');
+Route::localized(function () {
 
-Route::get('/avances-de-obra', [PublicPagesController::class, 'construction'])->name('construction');
+    Route::get('/', [PublicPagesController::class, 'home'])->name('home');
 
-Route::get('/sobre-nosotros', function(){return view('about');})->name('about');
+    Route::get( Lang::uri('/avances-de-obra') , [PublicPagesController::class, 'construction'])->name('construction');
 
-Route::get('/contacto', function(){return view('contact');})->name('contact');
+    Route::get( Lang::uri('/sobre-nosotros') , function(){return view('about');})->name('about');
 
-Route::get('/inventario-condominios', [PublicPagesController::class, 'inventory'] )->name('inventory');
+    Route::get( Lang::uri('/contacto') , function(){return view('contact');})->name('contact');
 
-Route::get('/condominio-en-venta/{unit}', [PublicPagesController::class, 'unit'] )->name('unit');
+    Route::get( Lang::uri('/inventario-condominios') , [PublicPagesController::class, 'inventory'] )->name('inventory');
+
+    Route::get( Lang::uri('/condominio-en-venta').'/{unit}', [PublicPagesController::class, 'unit'] )->name('unit');
+
+});
 
 
 Route::post('/send-message', [PublicPagesController::class, 'sendMail'])->name('send.email')->middleware(ProtectAgainstSpam::class);

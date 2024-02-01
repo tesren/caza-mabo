@@ -4,9 +4,9 @@
 
 return [
     '/contacto' => '/contact',
-    '/nosotros' => '/about-us',
+    '/sobre-nosotros' => '/about-us',
     '/aviso-de-privacidad' => '/privacy-policy',
-    '/condominios-en-venta' => '/condos-for-sale',
+    '/inventario-condominios' => '/inventory-condos-for-sale',
     '/avances-de-obra' => '/construction-progress',
     '/busqueda' => '/search',
     '/condominio-en-venta' => '/condominium-for-sale'

@@ -127,7 +127,7 @@
             <img src="{{asset('img/gym.webp')}}" alt="Gimnasio de Caza Mabó" class="w-100" loading="lazy" style="height: 300px; object-fit:cover;" data-fancybox="amenities">
         </div>
         
-        <div class="col-6 col-lg-4 px-0 position-relative">
+        <div class="col-12 col-lg-4 col-lg-4 px-0 position-relative">
             <a href="#amenities-5" class="fondo-cafe-amenities d-flex justify-content-center text-decoration-none">
                 <div class="align-self-center">
                     <i class="fa-solid fa-4x fa-fire"></i>

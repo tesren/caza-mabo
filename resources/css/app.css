@@ -210,6 +210,20 @@ label{
     color: var(--lightbrown);
 }
 
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: white;
+    background-color: var(--green);
+}
+
+.nav-pills .nav-link {
+    color: var(--green);
+}
+
+.hr-green{
+    color: var(--green);
+    opacity: 1;
+}
+
 @media (max-width: 992px) {
     .mt-6{
         margin-top: 3.5rem !important;

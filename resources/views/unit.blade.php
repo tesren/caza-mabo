@@ -47,11 +47,11 @@
     {{-- Detalles --}}
     <div class="row justify-content-evenly mb-6 bg-mostly-green">
 
-        <div class="col-12 col-lg-4 bg-white p-3 p-lg-4 rounded-0 shadow-4 text-brown position-relative z-2">
+        <div class="col-12 col-lg-4 bg-white p-4 rounded-0 shadow-4 text-brown position-relative z-2">
 
             <div class="fs-0 d-flex justify-content-center">
                 <small class="fs-5 align-self-center me-2">&#9670</small> 
-                <h2 class="fs-max fw-bold"> <div class="text-end fs-6 fw-normal">{{__('Unidad')}}</div> {{$unit->name}} </h2>
+                <h2 class="fs-max fw-bold"> <div class="text-center text-lg-end fs-6 fw-normal">{{__('Unidad')}}</div> {{$unit->name}} </h2>
                 <small class="ms-2 fs-5 align-self-center">&#9670</small>
             </div>
 
@@ -62,11 +62,11 @@
             </div>
 
             <img width="130px" src="{{asset('/img/leaves-min.webp')}}" alt="" class="position-absolute z-1" style="bottom: 70%; right:80%;" loading="lazy">
-            <img width="130px" src="{{asset('img/banana-leaf-left.webp')}}" alt="" class="position-absolute bottom-0 start-100" loading="lazy">
+            <img width="130px" src="{{asset('img/banana-leaf-left.webp')}}" alt="" class="position-absolute bottom-0 start-100 d-none d-lg-block" loading="lazy">
 
         </div>
 
-        <div class="col-12 col-lg-5 align-self-center text-white">
+        <div class="col-12 col-lg-5 align-self-center text-white bg-green py-5 py-lg-0">
             <h3 class="fs-2">{{__('Unidad')}} {{$unit->name}} {{$unit->unitType->name}}</h3>
 
             <p class="fs-6 fw-light">
@@ -112,6 +112,179 @@
             <img width="170px" src="{{asset('/img/diferent-leaves.webp')}}" alt="" class="position-absolute px-0 z-1" style="right:86%; bottom:87%;" loading="lazy">
 
         </div>
+    </div>
+
+    {{-- Planes de pago y Planos Arq. --}}
+    <div class="row justify-content-evenly mb-6">
+
+        <div class="col-12 col-lg-4 mb-5 mb-lg-0 align-self-center">
+            <h3 class="fs-4 text-brown">{{__('Planos Arquitectónicos')}}</h3>
+
+            @php
+                $blueprint = '/media/'.$unit->unitType->blueprint_path;
+            @endphp
+            <img class="w-100" src="{{ asset($blueprint) }}" alt="{{__('Planos Arquitectónicos')}} {{__('Unidad')}} {{$unit->name}} Caza Mabó" data-fancybox="Blueprint" loading="lazy">
+        </div>
+
+        <div class="col-12 col-lg-5">
+            <h4 class="fs-2 text-brown text-center">{{__('Planes de Pago')}}</h4>
+
+            <ul class="nav nav-pills mb-3 justify-content-evenly" id="pills-tab" role="tablist">
+
+                @php $i=1; @endphp
+                @foreach ($unit->paymentPlans as $plan)
+
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link rounded-pill @if($i==1) active @endif" id="pills-{{$plan->id}}-tab" data-bs-toggle="pill" data-bs-target="#pills-nav-{{$plan->id}}" type="button" role="tab">
+                            @if (app()->getLocale() == 'es')
+                                {{$plan->name}}
+                            @else
+                                {{$plan->name_en}}
+                            @endif  
+                        </button>
+                    </li>
+                    @php $i++; @endphp
+
+                @endforeach
+
+              </ul>
+
+              <div class="tab-content mb-5" id="pills-tabContent">
+
+                @php $j=0; @endphp
+                @foreach($unit->paymentPlans as $plan)
+                    <div class="tab-pane shadow-4 fade @if($j==0) show active @endif" id="pills-nav-{{$plan->id}}" role="tabpanel">
+
+                        <h5 class="fs-4 text-brown text-center py-4">
+                            @if (app()->getLocale() == 'es')
+                                {{$plan->name}}
+                            @else
+                                {{$plan->name_en}}
+                            @endif  
+                        </h5>
+
+                       @php
+                            if($plan->discount){
+                               $final_price = $unit->price * ( (100 - $plan->discount) / 100);
+                            }
+                            else{
+                               $final_price = $unit->price;
+                            }
+                       @endphp 
+
+                        <div class="bg-green py-4 text-center">
+                            <div>{{__('Precio Final')}}</div>
+                            <h5 class="fw-bold fs-2">${{ number_format($final_price) }} <small>{{$unit->currency}}</small> </h5>
+                        </div>
+
+                        @isset ( $plan->discount )
+                            <div class="row fs-5 text-brown py-3">
+
+                                <div class="col-6">
+                                    {{__('Precio de Lista')}} 
+                                    <i class="fa-regular fs-7 fa-circle-question" data-bs-toggle="tooltip" data-bs-title="{{__('Precio original sin descuento')}}"></i>
+                                </div>
+
+                                <div class="col-6 text-end text-decoration-line-through">
+                                    ${{ number_format($unit->price) }} {{$unit->currency}}
+                                </div>
+
+                            </div>
+                            <hr class="col-12 hr-green my-0">
+
+                            <div class="row fs-5 text-brown py-3">
+
+                                <div class="col-6">
+                                    {{__('Descuento')}} ({{$plan->discount}}%)
+                                </div>
+
+                                <div class="col-6 text-end">
+                                    ${{ number_format($unit->price * ($plan->discount/100)) }} {{$unit->currency}}
+                                </div>
+
+                            </div>
+                            <hr class="col-12 hr-green my-0">
+                        @endisset
+
+                        @isset($plan->down_payment)
+                            <div class="row fs-5 text-brown py-3">
+
+                                <div class="col-6">
+                                    {{__('Enganche')}} ({{$plan->down_payment}}%) 
+                                    <i class="fa-regular fs-7 fa-circle-question" data-bs-toggle="tooltip" data-bs-title="{{__('Enganche a la firma del contrato de promesa de compra-venta')}}"></i>
+                                </div>
+
+                                <div class="col-6 text-end">
+                                    ${{ number_format($final_price * ($plan->down_payment/100)) }} {{$unit->currency}}
+                                </div>
+
+                            </div>
+                            <hr class="col-12 hr-green my-0">
+                        @endisset
+
+                        @isset($plan->second_payment)
+                            <div class="row fs-5 text-brown py-3">
+
+                                <div class="col-6">
+                                    {{__('Segundo Pago')}} ({{$plan->second_payment}}%)
+                                </div>
+
+                                <div class="col-6 text-end">
+                                    ${{ number_format($final_price * ($plan->second_payment/100)) }} {{$unit->currency}}
+                                </div>
+
+                            </div>
+                            <hr class="col-12 hr-green my-0">
+                        @endisset
+
+                        @isset($plan->months_percent)
+                            <div class="row fs-5 text-brown py-3">
+
+                                <div class="col-6">
+                                    {{__('Mensualidades')}} ({{$plan->months_percent}}%)
+                                </div>
+
+                                <div class="col-6 text-end">
+                                    ${{ number_format($final_price * ($plan->months_percent/100)) }} {{$unit->currency}}
+                                </div>
+
+                            </div>
+                            <hr class="col-12 hr-green my-0">
+                        @endisset
+
+                        @isset($plan->closing_payment)
+                            <div class="row fs-5 text-brown py-3">
+
+                                <div class="col-6">
+                                    {{__('Pago Final')}} ({{$plan->closing_payment}}%)
+                                    <i class="fa-regular fs-7 fa-circle-question" data-bs-toggle="tooltip" data-bs-title="{{__('Pago a la entrega física de la propiedad')}}"></i>
+                                </div>
+
+                                <div class="col-6 text-end">
+                                    ${{ number_format($final_price * ($plan->closing_payment/100)) }} {{$unit->currency}}
+                                </div>
+
+                            </div>
+                            <hr class="col-12 hr-green my-0">
+                        @endisset
+    
+
+                    </div>
+                    @php $j++; @endphp
+                @endforeach
+    
+            </div>
+
+        </div>
+
+        <div class="col-12 col-lg-8 col-xxl-7 my-5">
+            <ul class="fs-6 fw-light text-secondary">
+                <li>{{__('El contrato de promesa de compra-venta tendrá que firmarse en un plazo máximo de diez días a partir de la firma de la Solicitud de Compra.')}}</li>
+                <li>{{__('En caso de no proceder con la compra de la unidad en el tiempo establecido (firma de contrato y pago de enganche), la unidad quedará disponible.')}}</li>
+                <li>{{__('Precios, descuentos y condiciones de pago sujetos a cambios sin previo aviso.')}}</li>
+            </ul>
+        </div>
+
     </div>
 
     {{-- Formulario de contacto --}}

@@ -24,7 +24,7 @@
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
                     <li class="nav-item position-relative">
-                        <a class="nav-link white-line px-4 active fw-medium" href="{{route('inventory')}}">{{__('Inventario')}}</a>
+                        <a class="nav-link white-line px-4 fw-medium" href="{{route('inventory')}}">{{__('Inventario')}}</a>
                     </li>
 
                     <li class="nav-item position-relative">
@@ -45,8 +45,28 @@
                         </a>
 
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
+
+                            @php
+                                $route = Route::currentRouteName();
+                            @endphp
+
+                            <li>
+                                @if($route == 'es.unit')
+                                    <a class="dropdown-item" href="{{$url = route('unit', ['name'=>$unit->name, 'utm_campaign' => request()->query('utm_campaign'), 'utm_source' => request()->query('utm_source'), 'utm_medium' => request()->query('utm_medium')], true, 'en');}}">{{__('English')}}</a>
+                                @else
+                                    <a class="dropdown-item" href="{{$url = route($route, request()->query(), true, 'en');}}">{{__('English')}}</a>
+                                @endif
+                            </li>
+
+
+                            <li>
+                                @if($route == 'es.unit')
+                                    <a class="dropdown-item" href="{{$url = route('unit', ['name'=>$unit->name, 'utm_campaign' => request()->query('utm_campaign'), 'utm_source' => request()->query('utm_source'), 'utm_medium' => request()->query('utm_medium')], true, 'es');}}">{{__('Español')}}</a>
+                                @else
+                                    <a class="dropdown-item" href="{{$url = route($route, request()->query(), true, 'es');}}">{{__('Español')}}</a>
+                                @endif
+                            </li>
+                          
                         </ul>
                     </li>
 
