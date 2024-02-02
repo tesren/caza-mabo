@@ -44,29 +44,33 @@
                           <img src="{{asset('img/language-icon.webp')}}" alt="{{__('Cambiar de idioma')}}">
                         </a>
 
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu bg-brown">
 
                             @php
                                 $route = Route::currentRouteName();
+                                $lang = app()->getLocale();
                             @endphp
 
-                            <li>
-                                @if($route == 'es.unit')
-                                    <a class="dropdown-item" href="{{$url = route('unit', ['name'=>$unit->name, 'utm_campaign' => request()->query('utm_campaign'), 'utm_source' => request()->query('utm_source'), 'utm_medium' => request()->query('utm_medium')], true, 'en');}}">{{__('English')}}</a>
-                                @else
-                                    <a class="dropdown-item" href="{{$url = route($route, request()->query(), true, 'en');}}">{{__('English')}}</a>
-                                @endif
-                            </li>
+                            @if ($lang == 'es')
+                                <li>
+                                    @if($route == 'es.unit')
+                                        <a class="dropdown-item link-light" href="{{$url = route('unit', ['unit'=>$unit->name, 'utm_campaign' => request()->query('utm_campaign'), 'utm_source' => request()->query('utm_source'), 'utm_medium' => request()->query('utm_medium')], true, 'en');}}">{{__('English')}}</a>
+                                    @else
+                                        <a class="dropdown-item link-light" href="{{$url = route($route, request()->query(), true, 'en');}}">{{__('English')}}</a>
+                                    @endif
+                                </li>
+                            @endif
 
+                            @if ($lang == 'en')
+                                <li>
+                                    @if($route == 'en.unit')
+                                        <a class="dropdown-item link-light" href="{{$url = route('unit', ['unit'=>$unit->name, 'utm_campaign' => request()->query('utm_campaign'), 'utm_source' => request()->query('utm_source'), 'utm_medium' => request()->query('utm_medium')], true, 'es');}}">{{__('Español')}}</a>
+                                    @else
+                                        <a class="dropdown-item link-light" href="{{$url = route($route, request()->query(), true, 'es');}}">{{__('Español')}}</a>
+                                    @endif
+                                </li>
+                            @endif
 
-                            <li>
-                                @if($route == 'es.unit')
-                                    <a class="dropdown-item" href="{{$url = route('unit', ['name'=>$unit->name, 'utm_campaign' => request()->query('utm_campaign'), 'utm_source' => request()->query('utm_source'), 'utm_medium' => request()->query('utm_medium')], true, 'es');}}">{{__('Español')}}</a>
-                                @else
-                                    <a class="dropdown-item" href="{{$url = route($route, request()->query(), true, 'es');}}">{{__('Español')}}</a>
-                                @endif
-                            </li>
-                          
                         </ul>
                     </li>
 

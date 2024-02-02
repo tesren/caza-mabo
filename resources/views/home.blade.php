@@ -16,7 +16,7 @@
             <div class="col-12 col-lg-8 col-xxl-4 text-center align-self-center text-white">
                 <h1 class="mb-4">{{__('Estilo de vida moderno, belleza y la armonía de la naturaleza.')}}</h1>
                 <p class="mb-4">{{__('El diseño de este proyecto se enfoca en crear espacios que se integren perfectamente con el entorno, maximizando el uso de los espacios y permitiendo que los usuarios disfruten de la conexión directa con la naturaleza.')}}</p>
-                <a href="#" class="btn w-100 btn-outline-light rounded-0">{{__('Inventario')}}</a>
+                <a href="{{route('inventory', request()->query() )}}" class="btn w-100 btn-outline-light rounded-0">{{__('Ver Inventario')}}</a>
             </div>
         </div>
 
@@ -54,10 +54,18 @@
     </section>
 
     {{-- Inventario --}}
+    <h3 class="fs-2 d-block d-lg-none text-center text-brown">{{__('Unidades Disponibles')}}</h3>
     <section class="position-relative mb-6">
-        <div class="position-absolute top-0 start-0 ms-5 mt-5 text-white">
+        <div class="position-absolute top-0 start-0 ms-5 mt-5 text-white d-none d-lg-block">
             <h3 class="fs-2">{{__('Unidades Disponibles')}}</h3>
-            <a href="#" class="btn btn-outline-light rounded-0 px-5">{{__('Ver Inventario')}}</a>
+            <a href="{{route('inventory', request()->query() )}}" class="btn btn-outline-light rounded-0 px-5">{{__('Ver Inventario')}}</a>
+        </div>
+
+        {{-- Solo en móvil --}}
+        <div class="row h-100 position-absolute top-0 start-0 text-white d-flex d-lg-none">
+            <div class="col-12 text-center align-self-center">
+                <a href="{{route('inventory', request()->query() )}}" class="btn btn-green rounded-0 px-5 fs-5 fw-bold">{{__('Ver Inventario')}}</a>    
+            </div>
         </div>
 
         <img src="{{asset('img/home-inventory.webp')}}" alt="Caza Mabó Inventory" class="w-100" loading="lazy">

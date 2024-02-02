@@ -3,7 +3,7 @@
 @php
     if($unit->unitType->bedrooms < 1 ){
         $bedroom_text = __('1 Loft');
-        $bedrooms = __('Studio');
+        $bedrooms = __('Estudio');
     }else{
         $bedroom_text = $unit->unitType->bedrooms . __('recámaras');
         $bedrooms = $unit->unitType->bedrooms;
@@ -12,9 +12,9 @@
 
 @section('titles')
     <title>{{__('Unidad')}} {{$unit->name}} - Caza Mabó</title>
-    <meta name="description" content="{{__('Este condominio ofrece')}} {{$bedroom_text}} y {{$unit->unitType->bathrooms}} {{__('baños de lujo, combinando comodidad y elegancia. Con')}} {{$unit->unitType->const_total}}m² 
-    {{__('en total, cada rincón refleja la calidad excepcional. ')}}
-    {{__('Situado en el piso')}} {{$unit->floor}}, {{__('disfruta de vistas impresionantes y una conexión única con el entorno costero. ')}}">
+    <meta name="description" content="{{__('Este condominio ofrece')}} {{$bedroom_text}} {{__('y')}} {{$unit->unitType->bathrooms}} {{__('baños de lujo, combinando comodidad y elegancia. Con')}} {{$unit->unitType->const_total}}m² 
+    {{__('en total, cada rincón refleja la calidad excepcional.')}}
+    {{__('Situado en el piso')}} {{$unit->floor}}, {{__('disfruta de vistas impresionantes y una conexión única con el entorno costero.')}}">
 @endsection
 
 @section('content')
@@ -25,7 +25,12 @@
 
     {{-- Inicio --}}
     <div class="position-relative mb-6">
-        <img src="{{$images[0]->getUrl('large')}}" alt="{{__('Unidad')}} {{$unit->name}} - Caza Mabó" class="w-100" style="height:50vh; object-fit:cover;">
+
+        @if ( count($images) > 0)
+            <img src="{{$images[0]->getUrl('large')}}" alt="{{__('Unidad')}} {{$unit->name}} - Caza Mabó" class="w-100" style="height:50vh; object-fit:cover;">
+        @else
+            <img src="{{ asset('img/fachada-alberca.webp') }}" alt="{{__('Unidad')}} {{$unit->name}} - Caza Mabó" class="w-100" style="height:50vh; object-fit:cover;">
+        @endif
         
         <div class="fondo-cafe"></div>
 
@@ -70,9 +75,9 @@
             <h3 class="fs-2">{{__('Unidad')}} {{$unit->name}} {{$unit->unitType->name}}</h3>
 
             <p class="fs-6 fw-light">
-                {{__('Este condominio ofrece')}} {{$bedroom_text}} y {{$unit->unitType->bathrooms}} {{__('baños de lujo, combinando comodidad y elegancia. Con')}} {{$unit->unitType->const_total}}m² 
-                {{__('en total, cada rincón refleja la calidad excepcional. ')}}
-                {{__('Situado en el piso')}} {{$unit->floor}}, {{__('disfruta de vistas impresionantes y una conexión única con el entorno costero. ')}}
+                {{__('Este condominio ofrece')}} {{$bedroom_text}} {{__('y')}} {{$unit->unitType->bathrooms}} {{__('baños de lujo, combinando comodidad y elegancia. Con')}} {{$unit->unitType->const_total}}m² 
+                {{__('en total, cada rincón refleja la calidad excepcional.')}}
+                {{__('Situado en el piso')}} {{$unit->floor}}, {{__('disfruta de vistas impresionantes y una conexión única con el entorno costero.')}}
             </p>
         </div>
 

@@ -9,7 +9,7 @@
 
     <div class="d-flex justify-content-center my-6 bg-half-green">
         <div class="shadow-4 rounded-3 py-3 px-5 bg-white position-relative">
-            <h1 class="text-lightbrown mb-0 fs-2">{{__('Avances de obra')}}</h1>
+            <h1 class="text-lightbrown mb-0 fs-2">{{__('Avances de Obra')}}</h1>
             <img width="100px" src="{{asset('img/leaves-min.webp')}}" alt="" class="position-absolute bottom-0" style="left:80%;" loading="lazy">
         </div>
     </div>
@@ -38,12 +38,12 @@
                     <div class="card-body bg-brown d-flex">
                         <img class="me-4" src="{{asset('/img/logo-minimized.webp')}}" alt="" width="100px">
                         
-                        <h2 class="mb-0 lh-1">{{$date}} <br> <span class="fs-5">Avance de Obra</span> </h2>
+                        <h2 class="mb-0 lh-1">{{$date}} <br> <span class="fs-5">{{__('Avance de Obra')}}</span> </h2>
                         
                     </div>
 
                     @if ($update->video_link)
-                        <a href="{{$update->video_link}}" data-fancybox="construction-{{$update->id}}" class="d-none">Video de avance de obra Caza Mabó - {{$date}}</a>
+                        <a href="{{$update->video_link}}" data-fancybox="construction-{{$update->id}}" class="d-none">{{__('Video de avance de obra')}} Caza Mabó - {{$date}}</a>
                     @endif
 
                     @foreach ($images as $image)

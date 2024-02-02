@@ -45,7 +45,7 @@
 
     <div class="py-2 bg-lightbrown text-center fs-7">
         ©Copyright 2024. {{__('Todos los derechos reservados por')}} Caza Mabó
-        <a href="#" class="link-light border-start border-white ps-2">{{__('Políticas de Privacidad')}}</a>
+        <a href="{{route('privacy')}}" class="link-light border-start border-white ps-2">{{__('Políticas de Privacidad')}}</a>
     </div>
 
 </footer>

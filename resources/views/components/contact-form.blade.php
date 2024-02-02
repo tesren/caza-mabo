@@ -1,6 +1,6 @@
 <section class="row" title="Formulario de contacto">
 
-    <div class="col-12 col-lg-4 px-0">
+    <div class="col-12 col-lg-4 px-0 @if(Route::currentRouteName() == 'es.inventory' or Route::currentRouteName() == 'en.inventory') d-none d-lg-block @endif ">
         <img src="{{asset('img/contact-form.webp')}}" alt="Caza Mabó" loading="lazy" class="w-100">
     </div>
 

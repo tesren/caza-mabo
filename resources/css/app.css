@@ -131,6 +131,17 @@ h1, h2, h3, h4, h5, h6{
     transition: 0.3s;
 }
 
+.btn-green{
+    background-color: var(--green);
+    color: white;
+}
+
+.btn-green:hover{
+    background-color: #83a080;
+    color: white;
+    transition: 0.3s;
+}
+
 .white-line::after{
     content: "";
     position: absolute;
@@ -175,8 +186,30 @@ h1, h2, h3, h4, h5, h6{
     transition: 0.2s;
 }
 
-.unit-disponible:hover{
+.unit-square:hover .unit-disponible{
     fill: #198754 ;
+    transition: 0.3s;
+}
+
+.unit-apartada{
+    fill: #FFEF63;
+    mix-blend-mode: multiply;
+    transition: 0.2s;
+}
+
+.unit-square:hover .unit-apartada{
+    fill: #ffc107;
+    transition: 0.3s;
+}
+
+.unit-vendida{
+    fill: #FF6363;
+    mix-blend-mode: multiply;
+    transition: 0.2s;
+}
+
+.unit-square:hover .unit-vendida{
+    fill: #dc3545;
     transition: 0.3s;
 }
 
@@ -222,6 +255,14 @@ label{
 .hr-green{
     color: var(--green);
     opacity: 1;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    background-color: var(--lightbrown);
+}
+
+[data-fancybox]:hover{
+    cursor: pointer;
 }
 
 @media (max-width: 992px) {

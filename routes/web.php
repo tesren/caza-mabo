@@ -29,6 +29,8 @@ Route::localized(function () {
 
     Route::get( Lang::uri('/condominio-en-venta').'/{unit}', [PublicPagesController::class, 'unit'] )->name('unit');
 
+    Route::get( Lang::uri('/aviso-de-privacidad'), function(){return view('privacy-policy');} )->name('privacy');
+
 });
 
 

@@ -1,7 +1,7 @@
 @extends('components.base')
 
 @section('titles')
-    <title>Sobre Nosotros - Caza Mabó</title>
+    <title>{{__('Sobre Nosotros')}} - Caza Mabó</title>
     <meta name="description" content="{{__('Con más de 30 años de experiencia, somos un fondo inmobiliario arraigado en la próspera región de Puerto Vallarta y Riviera Nayarit. Nos enorgullece nuestra colaboración integral entre Desarrollos Inmobiliarios, Construcción y Real Estate, uniendo fuerzas para ofrecer una experiencia única.')}}">
 @endsection
 
