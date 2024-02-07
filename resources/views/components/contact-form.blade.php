@@ -1,4 +1,4 @@
-<section class="row" title="Formulario de contacto">
+<section class="row" title="Formulario de contacto" id="contact_section">
 
     <div class="col-12 col-lg-4 px-0 @if(Route::currentRouteName() == 'es.inventory' or Route::currentRouteName() == 'en.inventory') d-none d-lg-block @endif ">
         <img src="{{asset('img/contact-form.webp')}}" alt="Caza Mabó" loading="lazy" class="w-100">
@@ -8,10 +8,11 @@
 
     <div class="col-12 col-lg-5 align-self-center mt-4 mt-lg-0">
 
-        <h6 class="fs-2 text-lightbrown px-2 mb-4">{{__('Mantente en contacto')}}</h6>
+        <h6 class="fs-2 text-brown px-2 mb-0">{{__('¿Te gustaría saber más?')}}</h6>
+        <p class="fs-7 text-lightbrown px-2 mb-4">{{__('Completa el formulario y nuestros asesores se pondrán en contacto contigo.')}}</p>
 
         {{-- Formulario --}}
-        <form action="{{route('send.email')}}" method="post" onsubmit="disableBtn()">
+        <form action="{{route('send.email')}}#contact_section" method="post" onsubmit="disableBtn()">
             @csrf
         
             <div class="row">
@@ -51,7 +52,7 @@
 
         {{-- Mensaje de éxito --}}
         @if (session('message'))
-            <div class="p-3 text-success fw-semibold">
+            <div class="p-3 text-success fw-semibold fs-5 text-center mb-4">
                 <i class="fa-regular fa-circle-check"></i> {{__(session('message'))}}
             </div>
         @endif
@@ -71,8 +72,8 @@
         {{-- Javascript --}}
         <script>
             function disableBtn(){
-                let submitButton = document.getElementById('submit-btn');
-                submitButton.disable = true; 
+                const msgButton = document.getElementById("submit-btn");
+                msgButton.setAttribute("disabled", "true");
             }
         </script>
 

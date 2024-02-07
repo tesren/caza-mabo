@@ -31,9 +31,15 @@
                         <a class="nav-link white-line px-4 fw-medium" href="{{route('about')}}">{{__('Nosotros')}}</a>
                     </li>
 
-                    <li class="nav-item position-relative">
-                        <a class="nav-link white-line px-4 fw-medium" href="{{route('construction')}}">{{__('Avance de Obra')}}</a>
-                    </li>
+                    @php
+                        $const_updates = App\Models\ConstructionUpdate::all();
+                    @endphp
+
+                    @if (count($const_updates) > 0 )
+                        <li class="nav-item position-relative">
+                            <a class="nav-link white-line px-4 fw-medium" href="{{route('construction')}}">{{__('Avance de Obra')}}</a>
+                        </li>
+                    @endif
 
                     <li class="nav-item position-relative">
                         <a class="nav-link white-line px-4 fw-medium" href="{{route('contact')}}">{{__('Contacto')}}</a>

@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Unit;
+use App\Mail\NewLead;
+use App\Models\Message;
 use Barryvdh\DomPDF\PDF;
 use App\Models\PaymentPlan;
 use Illuminate\Http\Request;
 use App\Models\ConstructionUpdate;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class PublicPagesController extends Controller
 {
@@ -122,13 +125,13 @@ class PublicPagesController extends Controller
         
             $email = Mail::to('erick@punto401.com');
             
-            //$email->send(new NewLead($msg));
+            $email->send(new NewLead($msg));
 
             if( isset($pdf) ){
                 return $pdf->stream();
             }
             
-            return redirect()->back()->with('contact_message', 'Gracias, su mensaje ha sido enviado');
+            return redirect()->back()->with('message', 'Gracias, su mensaje ha sido enviado');
         }    
     }
 

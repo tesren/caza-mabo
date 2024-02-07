@@ -24,7 +24,8 @@
     </div>
 
     <div class="container my-6">
-        <h2 class="fs-2 text-lightbrown px-2 mb-4">{{__('Mantente en contacto')}}</h2>
+        <h2 class="fs-2 text-brown px-2 mb-0">{{__('¿Te gustaría saber más?')}}</h2>
+        <p class="fs-7 text-lightbrown px-2 mb-4">{{__('Completa el formulario y nuestros asesores se pondrán en contacto contigo.')}}</p>
 
         {{-- Formulario --}}
         <form action="{{route('send.email')}}" method="post" onsubmit="disableBtn()">

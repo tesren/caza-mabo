@@ -371,5 +371,7 @@
     "Sencilla" : "Single",
     "Doble" : "Double",
     "Doble + Flex" : "Double + Flex",
-    "Doble + Flex + Hall" : "Double + Flex + Hall"
+    "Doble + Flex + Hall" : "Double + Flex + Hall",
+    "¿Te gustaría saber más?" : "Would you like to know more?",
+    "Completa el formulario y nuestros asesores se pondrán en contacto contigo." : "Complete the form and our real estate agents will contact you."
 }

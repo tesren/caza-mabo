@@ -11,7 +11,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // Cambiar la ruta pública por defecto en servidor
+        /* $this->app->bind('path.public', function() {
+            return '/home/admin/domains/cazamabosayulita.com/public_html'; // Reemplaza 'public_html' con la ruta real de tu nuevo directorio público
+        }); */
     }
 
     /**
@@ -19,6 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        
     }
 }

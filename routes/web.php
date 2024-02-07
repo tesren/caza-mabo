@@ -33,5 +33,9 @@ Route::localized(function () {
 
 });
 
-
 Route::post('/send-message', [PublicPagesController::class, 'sendMail'])->name('send.email')->middleware(ProtectAgainstSpam::class);
+
+Route::get('/cazamabo-optimize', function() {
+    Artisan::call('optimize');
+    return ('Optimizado');
+});

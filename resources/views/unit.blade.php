@@ -61,7 +61,7 @@
             </div>
 
             <div class="d-flex justify-content-center fs-5">
-                <div><i class="fa-solid fa-bed"></i> {{$bedrooms}}</div>
+                <div><i class="fa-solid fa-bed"></i> {{$bedrooms}} @if($unit->unitType->flexrooms) + Flex  @endif</div>
                 <div class="mx-3"><i class="fa-solid fa-toilet"></i> {{$unit->unitType->bathrooms}}</div>
                 <div><i class="fa-solid fa-maximize"></i> {{$unit->unitType->const_total}}m²</div>
             </div>
@@ -85,10 +85,10 @@
 
     {{-- Galería --}}
     <h3 class="fs-1 text-center mb-4 text-brown">{{__('Galería')}}</h3>
-    <div class="row justify-content-center mb-6">
-        <div class="col-12 col-lg-9 col-xxl-7 position-relative">
+    <div class="row justify-content-center mb-6 position-relative">
+        <div class="col-12 col-lg-9 col-xxl-7">
 
-            <div id="carouselExample" class="carousel slide position-relative z-2 shadow-4">
+            <div id="carouselExample" class="carousel carousel-dark slide position-relative z-2">
 
                 <div class="carousel-inner">
 
@@ -96,7 +96,7 @@
 
                     @foreach ($images as $img)
                         <div class="carousel-item @if($i==1) active @endif">
-                            <img src="{{$img->getUrl('large')}}" class="d-block w-100" alt="{{__('Unidad')}} {{$unit->name}} - Caza Mabó">
+                            <img src="{{$img->getUrl('large')}}" class="d-block w-100 shadow-4" alt="{{__('Unidad')}} {{$unit->name}} - Caza Mabó" style="max-height:70vh; object-fit:contain;">
                         </div>
                         @php $i++; @endphp
                     @endforeach
@@ -114,7 +114,7 @@
 
             </div>
 
-            <img width="170px" src="{{asset('/img/diferent-leaves.webp')}}" alt="" class="position-absolute px-0 z-1" style="right:86%; bottom:87%;" loading="lazy">
+            <img width="170px" src="{{asset('/img/banana-leaf-left.webp')}}" alt="" class="position-absolute px-0 z-1 end-0 top-0 d-none d-lg-block" style="transform:scaleX(-1);" loading="lazy">
 
         </div>
     </div>
